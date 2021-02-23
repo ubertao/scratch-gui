@@ -10,7 +10,7 @@ import editorTabReducer, {editorTabInitialState} from './editor-tab';
 import hoveredTargetReducer, {hoveredTargetInitialState} from './hovered-target';
 import menuReducer, {menuInitialState} from './menus';
 import micIndicatorReducer, {micIndicatorInitialState} from './mic-indicator';
-import mousePositionReducer, {updateMousePositionInitialState} from './mouse-position';
+import mousePositionReducer, {mousePositionInitialState} from './mouse-position';
 import modalReducer, {modalsInitialState} from './modals';
 import modeReducer, {modeInitialState} from './mode';
 import monitorReducer, {monitorsInitialState} from './monitors';
@@ -47,7 +47,7 @@ const guiInitialState = {
     stageSize: stageSizeInitialState,
     menus: menuInitialState,
     micIndicator: micIndicatorInitialState,
-    mousePosition: updateMousePositionInitialState,
+    mousePosition: mousePositionInitialState,
     modals: modalsInitialState,
     monitors: monitorsInitialState,
     monitorLayout: monitorLayoutInitialState,

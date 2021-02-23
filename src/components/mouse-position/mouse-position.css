@@ -5,3 +5,7 @@
     font-size: 0.625rem;
     color: $text-primary;
 }
+
+.hidden {
+    display: none;
+}

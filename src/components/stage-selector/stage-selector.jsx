@@ -5,6 +5,7 @@ import {defineMessages, intlShape, injectIntl, FormattedMessage} from 'react-int
 
 import Box from '../box/box.jsx';
 import ActionMenu from '../action-menu/action-menu.jsx';
+import StageOptions from '../stage-options/stage-options.jsx';
 import styles from './stage-selector.css';
 import {isRtl} from 'scratch-l10n';
 
@@ -80,6 +81,7 @@ const StageSelector = props => {
                     />
                 </div>
             </div>
+            <StageOptions stageSelected={selected} />
             {url ? (
                 <img
                     className={styles.costumeCanvas}
