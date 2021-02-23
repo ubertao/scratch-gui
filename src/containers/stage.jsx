@@ -17,6 +17,8 @@ import {
     deactivateColorPicker
 } from '../reducers/color-picker';
 
+import {updateMousePosition} from '../reducers/mouse-position';
+
 const colorPickerRadius = 20;
 const dragThreshold = 3; // Same as the block drag threshold
 
@@ -213,6 +215,13 @@ class Stage extends React.Component {
             canvasHeight: this.rect.height
         };
         this.props.vm.postIOData('mouse', coordinates);
+
+        const isMouseInCanvas = coordinates.x >= 0 && coordinates.x <= this.rect.width
+                             && coordinates.y >= 0 && coordinates.y <= this.rect.height;
+        if (isMouseInCanvas && !this.props.isFullScreen) {
+            const scratchCoordinates = this.getScratchCoords(coordinates.x, coordinates.y);
+            this.props.onUpdateMousePosition(scratchCoordinates[0], scratchCoordinates[1]);
+        }
     }
     onMouseUp (e) {
         const {x, y} = getEventXY(e);
@@ -433,6 +442,7 @@ Stage.propTypes = {
     micIndicator: PropTypes.bool,
     onActivateColorPicker: PropTypes.func,
     onDeactivateColorPicker: PropTypes.func,
+    onUpdateMousePosition: PropTypes.func,
     stageSize: PropTypes.oneOf(Object.keys(STAGE_DISPLAY_SIZES)).isRequired,
     useEditorDragStyle: PropTypes.bool,
     vm: PropTypes.instanceOf(VM).isRequired
@@ -452,6 +462,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
+    onUpdateMousePosition: (x, y) => dispatch(updateMousePosition(x, y)),
     onActivateColorPicker: () => dispatch(activateColorPicker()),
     onDeactivateColorPicker: color => dispatch(deactivateColorPicker(color))
 });

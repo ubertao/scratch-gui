@@ -1,0 +1,7 @@
+@import "../../css/colors.css";
+
+.mouse-position {
+    padding: 0.75rem;
+    font-size: 0.625rem;
+    color: $text-primary;
+}

@@ -102,6 +102,11 @@ stage doesn't "spill" out from under its rounded corners. instead, shift these o
     align-self: flex-end;
 }
 
+.mouse-positioin {
+    z-index: $z-index-stage-mouse-position;
+    pointer-events: auto;
+}
+
 .question-wrapper {
     z-index: $z-index-stage-question;
     pointer-events: auto;
